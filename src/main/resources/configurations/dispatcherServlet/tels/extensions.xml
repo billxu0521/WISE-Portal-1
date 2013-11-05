@@ -34,6 +34,16 @@
     	<property name="successView" value="student/registerstudentsuccess" />
     </bean>
     
+        <bean id="LotRegisterStudentController"
+    	class="org.telscenter.sail.webapp.presentation.web.controllers.student.LotRegisterStudentController">
+    	<property name="userService" ref="userService" />
+    	<property name="studentService" ref="studentService" />
+    	<property name="commandName" value="studentAccountForm" />
+    	<property name="validator" ref="studentAccountFormValidator" />
+    	<property name="formView" value="student/lotaccregister" />
+    	<property name="successView" value="student/registerstudentsuccess" />
+    </bean>
+    
         <bean id="registerteacherController"
     	class="org.telscenter.sail.webapp.presentation.web.controllers.teacher.RegisterTeacherController">
     	<property name="userService" ref="userService" />

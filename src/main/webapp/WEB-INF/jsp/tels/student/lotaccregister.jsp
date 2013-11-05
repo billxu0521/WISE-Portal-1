@@ -17,7 +17,7 @@
 <script type="text/javascript" src="<spring:theme code="jqueryuisource"/>"></script>
 <script type="text/javascript" src="<spring:theme code="generalsource"/>"></script>
 
-<title><spring:message code="student.registerstudent.studentRegistration" /></title>
+<title>團隊大量註冊用網頁</title>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -194,22 +194,19 @@ function checkIfReallyWantToCreateAccount() {
 }
 
 function createAccount() {
-    //高師大修改的RegisterStudentController.class不會去檢查英文或數字，但無原始碼，只有編譯過的class
-    //原本規則使用者名稱 = 姓+名+生日
-    //已改成使用者名稱 = 姓+名  修改檔案為StudentUserDetails.java
 	var runcode = document.getElementById("runCode_part1").value;
 	var period = document.getElementById("runCode_part2").value;
 	var firstname = document.getElementById("firstname").value;
 	var lastname = document.getElementById("lastname").value;
-	
-	/*if(!/^[a-zA-Z]*$/.test(firstname)) {
+	/*
+	if(!/^[a-zA-Z]*$/.test(firstname)) {
 		//first name contains characters that are not letters
 		alert("<spring:message code='student.registerstudent.firstNameOnlyLetters' />");
 	} else if(!/^[a-zA-Z]*$/.test(lastname)) {
 		//last name contains characters that are not letters
-		alert("<spring:message code='student.registerstudent.lastNameOnlyLetters' />");
-        }*/ 
-	if (runcode == null || runcode == "") {
+		alert("<spring:message code='student.registerstudent.lastNameOnlyLetters' />");}
+          */   
+	  if (runcode == null || runcode == "") {
 		alert("<spring:message code='student.addproject.enterAccessCode'/>");		
 			var periodSelect = document.getElementById("runCode_part2");
 			periodSelect.innerHTML = "";
@@ -241,13 +238,8 @@ function setup() {
 	
 	<div id="page">
 		
-		<div id="pageContent" style="min-height:400px;">
-			<div id="headerSmall">
-				<a id="name" href="/webapp/index.html" title="WISE Homepage"><spring:message code="wise" /></a>
-			</div>
-			
 			<div class="infoContent">
-				<div class="panelHeader"><spring:message code="student.registerstudent.studentRegistration"/></div>
+				<div class="panelHeader">大量註冊</div>
 				<div class="infoContentBox">
 					<div><spring:message code="student.registerstudent.formInstructions"/></div>
       
@@ -260,11 +252,16 @@ function setup() {
 						</spring:bind>
 					</div>
 
-					<form:form id="studentRegForm" commandName="studentAccountForm" method="post" action="registerstudent.html" autocomplete='off'>
+					<form:form id="studentRegForm" commandName="studentAccountForm" method="post" action="lotaccregister.html" autocomplete='off'>
 					  
 					  <table class="regTable">
-					  	<tr>
-					  		<td><label for="studentFirstName"><spring:message code="student.registerstudent.firstName"/></label></td>	    
+					  	
+                                              <tr>
+					  		<td><label for="studentFirstName">帳號：${Signupdate}</label></td>	    
+					  	  	
+					   	</tr>
+                                              <tr>
+					  		<td><label for="studentFirstName">帳號：</label></td>	    
 					  	  	<td><form:input path="userDetails.firstname" id="firstname" size="25" maxlength="25" tabindex="1"/>
 							    <form:errors path="userDetails.firstname" />
 						    	<span class="hint"><spring:message code="student.registerstudent.firstNameOnlyLetters"/><span class="hint-pointer"></span></span> 
@@ -272,7 +269,7 @@ function setup() {
 					   	</tr>
 					
 					  	<tr>
-					  		<td><label for="studentLastName"><spring:message code="student.registerstudent.lastName"/></label></td>
+					  		<td><label for="studentLastName">名字：</label></td>
 							<td><form:input path="userDetails.lastname" id="lastname" size="25" maxlength="25" tabindex="2"/>
 							    <form:errors path="userDetails.lastname" />
 						    	<span class="hint"><spring:message code="student.registerstudent.lastNameOnlyLetters"/><span class="hint-pointer"></span></span> 
@@ -351,7 +348,7 @@ function setup() {
 				
 					  	<tr>
 					  		<td><label for="reminderAnswer" id="reminderAnswer"><spring:message code="student.registerstudent.securityQuestionAnswer"/></label></td>
-							<td><form:input path="userDetails.accountAnswer" id="accountAnswer" size="25" maxlength="25" tabindex="9"/>
+							<td><form:input path="userDetails.accountAnswer" id="accountAnswer" size="25" maxlength="25" tabindex="9" value="123456789"/>
 								<span class="hint"><spring:message code="student.registerstudent.securityQuestionAnswerHelp"/><span class="hint-pointer"></span></span>			
 						    </td>
 						</tr>

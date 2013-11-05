@@ -58,13 +58,13 @@ import org.telscenter.sail.webapp.service.student.StudentService;
  * @author Hiroki Terashima
  * @version $Id: RegisterStudentController.java 955 2007-08-21 22:47:13Z hiroki $
  */
-public class RegisterStudentController extends SignupController {
+public class LotRegisterStudentController extends SignupController {
 	
 	private StudentService studentService;
 	
 	protected static final String USERNAME_KEY = "username";
 	
-	public RegisterStudentController() {
+	public LoRegisterStudentController() {
 		setValidateOnBinding(false);
 	}
 	
@@ -86,20 +86,20 @@ public class RegisterStudentController extends SignupController {
 		String domain =  "http://" + request.getServerName();
 		String domainWithPort = domain + ":" + request.getLocalPort();
 		String referrer = request.getHeader("referer");
-		String registerUrl = "/webapp/student/registerstudent.html";
+		String registerUrl = "/webapp/student/lotaccregister.html";
 		
 		if(referrer != null && (referrer.contains(domain + registerUrl) || referrer.contains(domainWithPort + registerUrl))){
 			StudentAccountForm accountForm = (StudentAccountForm) command;
 			StudentUserDetails userDetails = (StudentUserDetails) accountForm.getUserDetails();
 	
 			if (accountForm.isNewAccount()) {
-				try {
+                        try {    
 					//get the first name and last name
 					String firstName = userDetails.getFirstname();
 					String lastName = userDetails.getLastname();
-
+                                        
 					//check if first name and last name only contain letters
-					Pattern pattern = Pattern.compile("[a-zA-Z]*");
+					Pattern pattern = Pattern.compile("*");
 					Matcher firstNameMatcher = pattern.matcher(firstName);
 					Matcher lastNameMatcher = pattern.matcher(lastName);
 					
@@ -131,7 +131,7 @@ public class RegisterStudentController extends SignupController {
 						// if it reaches here, it means that hibernate optimisitic locking exception was not thrown, so we can exit the loop.
 						break;
 					}
-				} catch (DuplicateUsernameException e) {
+                        } catch (DuplicateUsernameException e) {
 					errors.rejectValue("userDetails.username", "error.duplicate-username",
 							new Object[] { userDetails.getUsername() }, "Duplicate Username.");
 					return showForm(request, response, errors);
@@ -157,7 +157,7 @@ public class RegisterStudentController extends SignupController {
 	}
 	
 	@Override
-	protected Object fo rmBackingObject(HttpServletRequest request) throws Exception {
+	protected Object formBackingObject(HttpServletRequest request) throws Exception {
 		return new StudentAccountForm();
 	}
 	
@@ -175,14 +175,14 @@ public class RegisterStudentController extends SignupController {
 		StudentAccountForm accountForm = (StudentAccountForm) command;
 		StudentUserDetails userDetails = (StudentUserDetails) accountForm.getUserDetails();
 		if (accountForm.isNewAccount()) {
-			userDetails.setSignupdate(Calendar.getInstance().getTime());
+                        userDetails.setSignupdate(Calendar.getInstance().getTime());
 			Calendar birthday       = Calendar.getInstance();
 			int birthmonth = Integer.parseInt(accountForm.getBirthmonth());
 			int birthdate = Integer.parseInt(accountForm.getBirthdate());
 			birthday.set(Calendar.MONTH, birthmonth-1);  // month is 0-based
 			birthday.set(Calendar.DATE, birthdate);
 			userDetails.setBirthday(birthday.getTime());
-		}
+                }
 
 		getValidator().validate(accountForm, errors);
 	}

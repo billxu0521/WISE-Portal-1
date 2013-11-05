@@ -122,11 +122,13 @@
             	<sec:intercept-url pattern="/lostpassword*.html" access="ROLE_ANONYMOUS,ROLE_USER"/>
             	<sec:intercept-url pattern="/enter*.html" access="ROLE_ANONYMOUS,ROLE_USER"/>
             	<sec:intercept-url pattern="/student/registerstudent.html" access="ROLE_ANONYMOUS,ROLE_USER"/>
+                <sec:intercept-url pattern="/student/lotaccregister.html" access="ROLE_ANONYMOUS,ROLE_USER"/>
             	<sec:intercept-url pattern="/student/getannotationbundle.html" access="ROLE_ANONYMOUS,ROLE_USER"/>
             	<sec:intercept-url pattern="/student/**/*.html" access="ROLE_STUDENT,ROLE_TEACHER,ROLE_ADMINISTRATOR,ROLE_RESEARCHER"/>
             	<sec:intercept-url pattern="/teacher/registerteacher.html" access="ROLE_ANONYMOUS,ROLE_USER"/>
             	<sec:intercept-url pattern="/teacher/curriculumsubjects.html" access="ROLE_ANONYMOUS,ROLE_USER"/>
             	<sec:intercept-url pattern="/teacher/termsofuse.html" access="ROLE_ANONYMOUS,ROLE_USER"/>
+                
             	<sec:intercept-url pattern="/teacher/projects/projectinfo.html" access="ROLE_ANONYMOUS,ROLE_USER"/>
             	<sec:intercept-url pattern="/teacher/**/*.html" access="ROLE_TEACHER,ROLE_ADMINISTRATOR,ROLE_RESEARCHER"/>
             	<sec:intercept-url pattern="/wiseoverview.html" access="ROLE_ANONYMOUS,ROLE_USER"/>

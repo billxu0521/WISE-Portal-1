@@ -170,7 +170,9 @@ public class StudentUserDetails extends PersistentUserDetails implements
 	public String getCoreUsername() {
 		String firstname = getFirstname();
 		String lastnameInitial = getLastname().substring(0, 1);
-
+                //修改註冊規則
+                String lastname = getLastname();
+                
 		Calendar birthday = Calendar.getInstance();
 		birthday.setTime(this.birthday);
 		
@@ -184,9 +186,10 @@ public class StudentUserDetails extends PersistentUserDetails implements
 		if (birthdate <= 9) {
 			birthdateString = "0" + birthdateString;
 		}
-		
-		String username = firstname + lastnameInitial +
-		birthmonthString + birthdateString;
+                //修改註冊規則
+		String username = firstname + lastname;
+		//String username = firstname + lastnameInitial +
+		//birthmonthString + birthdateString;
 		username = username.replaceAll("[^a-zA-Z0-9]", "");
 
 		return username;

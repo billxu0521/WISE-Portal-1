@@ -35,8 +35,8 @@
 						<h4><spring:message code="student.registerstudentsuccess.accountCreated"/></h4>
 						<h4><spring:message code="student.registerstudentsuccess.newUsername"/> <span class="usernameDisplay">${username}</span></h4>
 						<div style="color:#ff563f;"><spring:message code="student.registerstudentsuccess.writeDownUserInfo"/></div>
-					    <div class="instructions"><spring:message code="student.registerstudentsuccess.rememberUsername"/></div>
-					    <div class="instructions"><spring:message code="student.registerstudentsuccess.usernameExample"/></div>
+					    <!--div class="instructions"><-spring:message code="student.registerstudentsuccess.rememberUsername"/></div-->
+					    <!--div class="instructions"><-spring:message code="student.registerstudentsuccess.usernameExample"/></div-->
 					</div>
 					<div><spring:message code="student.registerstudentsuccess.registerMoreTeammates"/></div>
 					<div><a href="registerstudent.html" class="wisebutton"><spring:message code="student.registerstudentsuccess.createNewAccount"/></a></div>

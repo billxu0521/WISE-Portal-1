@@ -33,7 +33,8 @@
 					<h4><spring:message code="signup.accountType"/></h4>
 					<div><a href="/webapp/student/registerstudent.html" class="wisebutton" title="<spring:message code="signup.student"/>"><spring:message code="signup.student"/></a></div>
 					<div><a href="/webapp/teacher/registerteacher.html" class="wisebutton" title="<spring:message code="signup.teacher"/>"><spring:message code="signup.teacher"/></a></div>
-					<div style="margin-top:1em;"><spring:message code="signup.whichAccount" /></div>
+					<div><a href="/webapp/student/lotaccregister.html" class="wisebutton" >mult regist</a></div>
+                                        <div style="margin-top:1em;"><spring:message code="signup.whichAccount" /></div>
 					<div class="instructions"><spring:message code="signup.studentDescription" /></div>
 					<div class="instructions"><spring:message code="signup.teacherDescription" /></div>
 				</div>
